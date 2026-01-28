@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Etiquetas Integrado</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <header>
+        <div style="font-weight: bold; font-size: 20px;">GERADOR DE ETIQUETAS</div>
+        <nav>
+            <button onclick="trocarLayout('termico', this)" class="active">VENDIDO</button>
+            <button onclick="trocarLayout('transf', this)">TRANSFERENCIA</button>
+            <button onclick="trocarLayout('a4_estoque', this)">CONTROLE DE OS</button>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- FORMULÁRIO 1: VENDAS BOBINA 80mm -->
+        <div id="form-termico" class="form-card visible">
+            <h3 style="margin-top:0; text-align: center;">VENDIDO</h3>
+            <div class="form-group"><label>Nº Venda</label><input type="text" id="t_venda"></div>
+            <div class="form-group"><label>Vendedor</label><input type="text" id="t_vend"></div>
+            <div class="form-group"><label>Data da Venda</label><input type="date" id="dataVenda" required></div>
+            <div class="form-group"><label>Confirmado por</label><input type="text" id="confirmadoPor" required></div>
+            <button class="btn-gerar" onclick="logicaTermica()">GERAR ETIQUETA</button>
+        </div>
+
+        <!-- FORMULÁRIO 2: TRANSFERENCIA 80mm -->
+        <div id="form-transf" class="form-card">
+            <h3 style="margin-top:0; text-align: center;">TRANSFERENCIA</h3>
+            <div class="form-group"><label>Nº DA TRANSF</label><input type="text" id="transf"></div>
+            <div class="form-group"><label>Nº DA NFE</label><input type="text" id="nfe"></div>
+            <div class="form-group"><label>SOLICITADO</label><input type="text" id="solicitado"></div>
+            <div class="form-group"><label>LOJA</label><input type="text" id="loja"></div>
+            <div class="form-group"><label>DATA</label><input type="date" id="data-transf" required></div>
+            <button class="btn-gerar" onclick="logicaTransf()">GERAR ETIQUETA</button>
+        </div>
+
+        <!-- FORMULÁRIO 3: A4 ESTOQUE -->
+        <div id="form-a4_estoque" class="form-card-os">
+            <h3 style="margin-top:0; text-align: center;">CONTROLE DE OS</h3>
+            <div class="form-group"><label>PRODUTO</label><input type="text" id="produto"></div>
+            <label>PEÇAS</label>
+            <div class="form-group pecas"><input type="text" id="pecas"><button class="btn-pecas"
+                    onclick="salvarPecas()">Peças</button></div>
+            <ul class="form-group pecas-content"></ul>
+            <div class="form-group"><label>OS</label><input type="text" id="os"></div>
+            <div class="form-group"><label>VENDA</label><input type="text" id="venda"></div>
+            <div class="form-group"><label>RETIRADO</label><input type="text" id="retirado"></div>
+            <div class="form-group"><label>DATA</label><input type="date" id="data-os" required></div>
+            <button class="btn-gerar" onclick="logicaA4Estoque()">GERAR ETIQUETA</button>
+        </div>
+
+        <!-- ÁREA ONDE A MÁGICA ACONTECE -->
+        <div id="areaImpressao"></div>
+        <button id="btnImprimirGeral" class="btn-print-sistema" onclick="window.print()">IMPRIMIR AGORA</button>
+
+    </div>
+
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>

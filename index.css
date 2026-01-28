@@ -1,0 +1,339 @@
+/* --- CSS BASE --- */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: #f4f7f6;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav button {
+    background: none;
+    border: 1px solid #fff;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background: #34495e;
+}
+
+nav button.active {
+    background: #27ae60;
+    border-color: #27ae60;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 380px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.form-card-os {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 480px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.form-card-os.visible {
+    display: block;
+}
+
+.form-card.visible {
+    display: block;
+}
+
+.pecas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+}
+
+.btn-pecas {
+    text-transform: uppercase;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pecas-content {
+    width: 96%;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 10px;
+    text-align: center;
+    overflow: auto;
+
+}
+
+.btn-clear {
+    margin-left: 10px;
+    border: none;
+    background: transparent;
+    color: red;
+    cursor: pointer;
+}
+
+.btn-clear:hover {
+    color: rgb(145, 18, 18);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-gerar {
+    width: 100%;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- ÁREA DE IMPRESSÃO (VISUALIZAÇÃO NA TELA) --- */
+#areaImpressao {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-print-sistema {
+    background: #2980b9;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* --- ESTILO DA ETIQUETA TÉRMICA (65mm) --- */
+.preview-termico .etiqueta {
+    width: 65mm;
+
+    background: white;
+    border-bottom: 2px dashed #999;
+    box-sizing: border-box;
+    /* Essencial para não cortar à direita */
+    margin-bottom: 10px;
+}
+
+.preview-termico h3 {
+    text-align: center;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+.preview-termico .linha {
+    display: flex;
+    align-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    font-size: 13px;
+    /* Tamanho da fonte para caber no papel */
+}
+
+/* Controle de alinhamento das Labels */
+.preview-termico .label-impressao {
+    width: 25mm;
+    /* Largura fixa para alinhar os ":" verticalmente */
+    font-weight: bold;
+    flex-shrink: 0;
+    /* Impede a label de espremer */
+}
+
+.preview-termico .valor-impressao {
+    flex: 1;
+    word-break: break-all;
+    /* Evita que textos longos cortem a etiqueta */
+}
+
+/* --- ESTILO FOLHA A4 --- */
+.preview-a4 .etiqueta {
+    width: 180mm;
+    border: 2px solid #000;
+    padding: 20px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+
+/* --- @MEDIA PRINT (CONFIGURAÇÃO PARA IMPRESSORA) --- */
+@media print {
+    @page {
+        size: auto;
+        margin: 0;
+    }
+
+    header,
+    .form-card,
+    .form-card-os,
+    .btn-print-sistema,
+    button,
+    nav {
+        display: none !important;
+    }
+
+    html,
+    body {
+        height: auto !important;
+        background: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    #areaImpressao {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn-clear {
+        color: #fff;
+    }
+
+
+    .preview-termico .etiqueta {
+        width: 65mm !important;
+        padding: 4mm !important;
+        padding-top: 2mm !important;
+        margin-top: 0 !important;
+        /* Cola o texto no topo da etiqueta */
+        margin-bottom: 40mm !important;
+        height: auto;
+        /* Deixa a altura livre para o conteúdo */
+        page-break-after: always;
+        /* Força a impressora a entender que ali acaba uma etiqueta */
+        /* Aumentamos um pouco o recuo das bordas */
+        box-sizing: border-box !important;
+        /* Garante que o padding seja calculado DENTRO dos 65mm */
+        background: white;
+        border-bottom: 2px dashed #999;
+        border-top: 2px dashed #999;
+        overflow: hidden;
+        /* Corta o que sobrar em vez de expandir a etiqueta */
+    }
+
+    .preview-termico .linha {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 6px;
+        padding-right: 2mm;
+        /* Margem de segurança extra para não cortar a última letra */
+        box-sizing: border-box;
+    }
+
+
+    .preview-termico .label-impressao {
+        font-weight: bold;
+        flex-shrink: 0;
+        /* Impede que o nome do campo seja espremido */
+        margin-right: 5px;
+        /* Pequeno respiro caso o texto seja longo */
+    }
+
+    .preview-termico .valor-impressao {
+        text-align: right;
+        /* Garante o alinhamento à direita do texto */
+        font-weight: normal;
+        word-break: break-all;
+        /* Se o dado for muito grande, ele quebra sem sumir */
+    }
+
+    .preview-a4 {
+        width: 720px !important;
+        border: 2px solid #000 !important;
+        padding: 0 20px 0 20px;
+    }
+
+    .preview-a4 .linha {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 6px;
+        padding-right: 2mm;
+        /* Margem de segurança extra para não cortar a última letra */
+        box-sizing: border-box;
+    }
+
+    .linha {
+        display: flex;
+        align-self: end;
+    }
+
+    /*    .linha b {
+        font-size: 1.6rem;
+    } */
+
+    .linha-prod {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .linha-os {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+
+}
