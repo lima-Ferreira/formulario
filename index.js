@@ -96,12 +96,12 @@ function logicaA4Estoque() {
   <div class="preview-a4">
     <div class="etiqueta-a4">
         <h1 style="text-align:center">INFORMAÇÕES DA ASSISTÊNCIA</h1>
-        <div class="linha"><b>PRODUTO:</b style="font-size: 1.4em; font-size: 1.4em">
+        <div class="linha"><b style="font-size: 1.4em;">PRODUTO:</b>
          <span class="linha-prod">${produto}</span></div>
         
         <!-- 3. Usamos uma <ul> para manter a formatação de lista uma embaixo da outra -->
         <div class="linha">
-            <b>PEÇAS:</b> <br> 
+            <b style="font-size: 1.4em;">PEÇAS:</b> <br> 
             <ul style="list-style: none; padding: 0; margin: 0;">${conteudoPecas}</ul>
         </div>
 
